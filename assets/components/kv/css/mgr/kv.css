@@ -1,0 +1,26 @@
+#modx-action-buttons .x-btn-branding {
+	background: none !important;
+	box-shadow: none !important;
+	border: none !important;
+	color: #555555 !important;
+}
+
+.panel-desc {
+	overflow: hidden;
+}
+
+.panel-desc .logo-kv {
+	display: block;
+	float: right;
+	width: 220px;
+	height: 85px;
+	margin: -15px -15px -15px 15px;
+	background: #ffffff url('../../img/mgr/logo.png') no-repeat center center;
+	border-bottom: 1px solid #f0f0f0;
+}
+
+.avarage {
+	display: inline-block;
+	width: 40px;
+	text-align: right;
+}
