@@ -53,7 +53,7 @@
 	$category->fromArray(array('id' => 1, 'category' => PKG_NAME), '', true, true);
 	
 	if (file_exists($sources['data'].'transport.chunks.php')) {
-		$modx->log(modX::LOG_LEVEL_INFO, 'Packaging in chunk(s) into category...');
+		$modx->log(modX::LOG_LEVEL_INFO, 'Packaging chunk(s) into category...');
 		
 		$chunks = include $sources['data'].'transport.chunks.php';
 	
@@ -61,13 +61,13 @@
 			$category->addMany($chunk);
 		}
 		
-		$modx->log(modX::LOG_LEVEL_INFO, 'Packed chunk(s) '.count($chunks).' into category.');
+		$modx->log(modX::LOG_LEVEL_INFO, 'Packed '.count($chunks).' chunk(s) into category.');
 	} else {
 		$modx->log(modX::LOG_LEVEL_INFO, 'No chunk(s) to pack...');
 	}
 	
 	if (file_exists($sources['data'].'transport.cronjobs.php')) {	
-		$modx->log(modX::LOG_LEVEL_INFO, 'Packaging in cronjobs(s) into category...');
+		$modx->log(modX::LOG_LEVEL_INFO, 'Packaging cronjobs(s) into category...');
 	
 		$cronjobs = include $sources['data'].'transport.cronjobs.php';
 	
@@ -75,13 +75,13 @@
 			$category->addMany($cronjob);
 		}
 
-		$modx->log(modX::LOG_LEVEL_INFO, 'Packed cronjobs(s) '.count($cronjobs).' into category.');
+		$modx->log(modX::LOG_LEVEL_INFO, 'Packed '.count($cronjobs).' cronjobs(s) into category.');
 	} else {
 		$modx->log(modX::LOG_LEVEL_INFO, 'No cronjobs(s) to pack...');
 	}
 
 	if (file_exists($sources['data'].'transport.plugins.php')) {	
-		$modx->log(modX::LOG_LEVEL_INFO, 'Packaging in plugins(s) into category...');
+		$modx->log(modX::LOG_LEVEL_INFO, 'Packaging plugins(s) into category...');
 	
 		$plugins = include $sources['data'].'transport.plugins.php';
 	
@@ -89,13 +89,13 @@
 			$category->addMany($plugin);
 		}
 
-		$modx->log(modX::LOG_LEVEL_INFO, 'Packed plugins(s) '.count($plugins).' into category.');
+		$modx->log(modX::LOG_LEVEL_INFO, 'Packed '.count($plugins).' plugins(s) into category.');
 	} else {
 		$modx->log(modX::LOG_LEVEL_INFO, 'No plugins(s) to pack...');
 	}
 	
 	if (file_exists($sources['data'].'transport.snippets.php')) {	
-		$modx->log(modX::LOG_LEVEL_INFO, 'Packaging in snippet(s) into category...');
+		$modx->log(modX::LOG_LEVEL_INFO, 'Packaging snippet(s) into category...');
 	
 		$snippets = include $sources['data'].'transport.snippets.php';
 	
@@ -103,7 +103,7 @@
 			$category->addMany($snippet);
 		}
 
-		$modx->log(modX::LOG_LEVEL_INFO, 'Packed snippet(s) '.count($snippets).' into category.');
+		$modx->log(modX::LOG_LEVEL_INFO, 'Packed '.count($snippets).' snippet(s) into category.');
 	} else {
 		$modx->log(modX::LOG_LEVEL_INFO, 'No snippet(s) to pack...');
 	}
@@ -137,8 +137,26 @@
 	    )
 	)));
 	
+	if (file_exists($sources['data'].'transport.events.php')) {
+		$events = include $sources['data'].'transport.events.php';
+		
+		$modx->log(modX::LOG_LEVEL_INFO, 'Packaging events(s) into category...');
+		
+		foreach ($events as $key => $value) {
+			$builder->putVehicle($builder->createVehicle($value, array(
+				xPDOTransport::UNIQUE_KEY 		=> 'name',
+				xPDOTransport::PRESERVE_KEYS 	=> true,
+				xPDOTransport::UPDATE_OBJECT 	=> false
+			)));
+		}
+		
+		$modx->log(modX::LOG_LEVEL_INFO, 'Packed '.count($events).' events(s) into category.');
+	} else {
+		$modx->log(modX::LOG_LEVEL_INFO, 'No events(s) to pack...');
+	}
+	
 	if (file_exists($sources['data'].'transport.widgets.php')) {
-		$modx->log(modX::LOG_LEVEL_INFO, 'Packaging in widgets(s) into category...');
+		$modx->log(modX::LOG_LEVEL_INFO, 'Packaging widgets(s) into category...');
 		
 		$widgets = include $sources['data'].'transport.widgets.php';
 	
@@ -150,7 +168,7 @@
 			)));
 		}
 		
-		$modx->log(modX::LOG_LEVEL_INFO, 'Packed widgets(s) '.count($widgets).' into category.');
+		$modx->log(modX::LOG_LEVEL_INFO, 'Packed '.count($widgets).' widgets(s) into category.');
 	} else {
 		$modx->log(modX::LOG_LEVEL_INFO, 'No widgets(s) to pack...');
 	}
@@ -158,7 +176,7 @@
 	if (file_exists($sources['data'].'transport.settings.php')) {
 		$settings = include $sources['data'].'transport.settings.php';
 		
-		$modx->log(modX::LOG_LEVEL_INFO, 'Packaging in systemsetting(s) into category...');
+		$modx->log(modX::LOG_LEVEL_INFO, 'Packaging systemsetting(s) into category...');
 		
 		foreach ($settings as $key => $value) {
 			$builder->putVehicle($builder->createVehicle($value, array(
@@ -168,7 +186,7 @@
 			)));
 		}
 		
-		$modx->log(modX::LOG_LEVEL_INFO, 'Packed systemsetting(s) '.count($settings).' into category.');
+		$modx->log(modX::LOG_LEVEL_INFO, 'Packed '.count($settings).' systemsetting(s) into category.');
 	} else {
 		$modx->log(modX::LOG_LEVEL_INFO, 'No systemsetting(s) to pack...');
 	}
@@ -178,7 +196,7 @@
 	if (file_exists($sources['data'].'transport.menu.php')) {
 		$menu = include $sources['data'].'transport.menu.php';
 		
-		$modx->log(modX::LOG_LEVEL_INFO, 'Packaging in menu...');
+		$modx->log(modX::LOG_LEVEL_INFO, 'Packaging menu...');
 		
 		if (null === $menu) {
 			$modx->log(modX::LOG_LEVEL_ERROR, 'No menu to pack.');
@@ -197,7 +215,7 @@
 			    ),
 			));
 			
-			$modx->log(modX::LOG_LEVEL_INFO, 'Adding in PHP resolvers...');
+			$modx->log(modX::LOG_LEVEL_INFO, 'Adding PHP resolvers...');
 			
 			if (is_dir($sources['assets'])) {
 				$vehicle->resolve('file', array(

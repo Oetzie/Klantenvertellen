@@ -73,6 +73,8 @@
 				}
 			}
 			
+			$this->modx->invokeEvent('onKvUpdate');
+			
 			return $this->outputArray(array());
 		}
 	}

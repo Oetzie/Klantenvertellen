@@ -65,6 +65,8 @@
 			
 			$this->modx->removeCollection($this->classKey, array());
 			
+			$this->modx->invokeEvent('onKvUpdate');
+			
 			return $this->outputArray(array());
 		}
 	}

@@ -63,6 +63,8 @@
 				'kvreviews' => array()
 			));
 			
+			$this->modx->invokeEvent('onKvUpdate');
+			
 			return parent::afterSave();
 		}
 	}
