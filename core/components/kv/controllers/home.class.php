@@ -1,53 +1,42 @@
 <?php
 
-	/**
-	 * Klantenvertellen
-	 *
-	 * Copyright 2017 by Oene Tjeerd de Bruin <modx@oetzie.nl>
-	 *
-	 * Klantenvertellen is free software; you can redistribute it and/or modify it under
-	 * the terms of the GNU General Public License as published by the Free Software
-	 * Foundation; either version 2 of the License, or (at your option) any later
-	 * version.
-	 *
-	 * Klantenvertellen is distributed in the hope that it will be useful, but WITHOUT ANY
-	 * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
-	 * A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-	 *
-	 * You should have received a copy of the GNU General Public License along with
-	 * Klantenvertellen; if not, write to the Free Software Foundation, Inc., 59 Temple Place,
-	 * Suite 330, Boston, MA 02111-1307 USA
-	 */
-
-	class KvHomeManagerController extends KvManagerController {
-		/**
-		 * @access public.
-		 */
-		public function loadCustomCssJs() {
-			$this->addCss($this->kv->config['css_url'].'mgr/kv.css');
-			
-			$this->addJavascript($this->kv->config['js_url'].'mgr/widgets/home.panel.js');
-			
-			$this->addJavascript($this->kv->config['js_url'].'mgr/widgets/reviews.grid.js');
-			
-			$this->addLastJavascript($this->kv->config['js_url'].'mgr/sections/home.js');
-		}
-		
-		/**
-		 * @access public.
-		 * @return String.
-		 */
-		public function getPageTitle() {
-			return $this->modx->lexicon('kv');
-		}
-		
-		/**
-		* @access public.
-		* @return String.
-		*/
-		public function getTemplateFile() {
-			return $this->kv->config['templates_path'].'home.tpl';
-		}
-	}
+    /**
+     * Klantenvertellen
+     *
+     * Copyright 2018 by Oene Tjeerd de Bruin <modx@oetzie.nl>
+     */
+    
+    require_once dirname(__DIR__) . '/index.class.php';
+    
+    class KvHomeManagerController extends KvManagerController {
+        /**
+         * @access public.
+         */
+        public function loadCustomCssJs() {
+            $this->addCss($this->modx->kv->config['css_url'] . 'mgr/kv.css');
+            
+            $this->addJavascript($this->modx->kv->config['js_url'] . 'mgr/widgets/home.panel.js');
+            
+            $this->addJavascript($this->modx->kv->config['js_url'] . 'mgr/widgets/reviews.grid.js');
+            
+            $this->addLastJavascript($this->modx->kv->config['js_url'] . 'mgr/sections/home.js');
+        }
+    
+        /**
+         * @access public.
+         * @return String.
+         */
+        public function getPageTitle() {
+            return $this->modx->lexicon('kv');
+        }
+        
+        /**
+         * @access public.
+         * @return String.
+         */
+        public function getTemplateFile() {
+            return $this->modx->kv->config['templates_path'] . 'home.tpl';
+        }
+    }
 
 ?>

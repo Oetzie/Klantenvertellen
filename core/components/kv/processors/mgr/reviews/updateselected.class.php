@@ -6,7 +6,7 @@
      * Copyright 2018 by Oene Tjeerd de Bruin <modx@oetzie.nl>
      */
     
-    class KvReviewsUpdateProcessor extends modObjectUpdateProcessor {
+    class KvReviewsUpdateSelectedProcessor extends modProcessor {
         /**
          * @access public.
          * @var String.
@@ -39,17 +39,27 @@
          * @access public.
          * @return Mixed.
          */
-        public function afterSave() {
+        public function process() {
             $this->modx->cacheManager->refresh([
                 'kvreviews' => []
             ]);
             
+            foreach (explode(',', $this->getProperty('ids')) as $key => $value) {
+                if (false !== ($object = $this->modx->getObject($this->classKey, $value))) {
+                    $object->fromArray([
+                        'active' => $this->getProperty('type')
+                    ]);
+                    
+                    $object->save();
+                }
+            }
+        
             $this->modx->invokeEvent('onKvUpdate');
             
-            return parent::afterSave();
+            return $this->outputArray([]);
         }
     }
     
-    return 'KvReviewsUpdateProcessor';
+    return 'KvReviewsUpdateSelectedProcessor';
 	
 ?>

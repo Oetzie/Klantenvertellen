@@ -1,0 +1,82 @@
+{
+    "name"          : "Klanten vertellen",
+    "namespace"     : "kv",
+    "signature"     : "kv",
+    "description"   : "",
+    "version"       : "1.1.0-pl",
+    "menu"          : [{
+        "text"          : "kv",
+        "description"   : "kv.desc",
+        "action"        : "home",
+        "icon"          : "comments",
+        "permissions"   : "kv",
+        "parent"        : "components"
+    }],
+    "elements"      : {
+        "snippets"      : [{
+            "name"          : "KvReviews",
+            "description"   : "Klantenvertellen 1.1.0-pl snippet for MODx Revolution",
+            "resolver"      : "elements/snippets/kvreviews.snippet.php",
+            "properties"    : [{
+                "name"          : "limit",
+                "value"         : 10
+            }, {
+                "name"          : "placeholders",
+                "value"         : "{\"total\": \"reviews.total\"}" 
+            }, {
+                "name"          : "sort",
+                "value"         : "{\"created\": \"DESC\"}"
+            }, {
+                "name"          : "tpl",
+                "value"         : "@FILE:reviewItemTpl"
+            }, {
+                "name"          : "tplWrapper",
+                "value"         : "@FILE:reviewsWrapperTpl"
+            }, {
+                "name"          : "type",
+                "value"         : "HTML"
+            }]
+        }]
+    },
+    "settings"      : [{
+        "key"           : "branding_url",
+        "value"         : "http://www.oetzie.nl"
+    }, {
+        "key"           : "branding_url_help",
+        "value"         : "//www.werkvanoetzie.nl/extras/klantenvertell"
+    }, {
+        "key"           : "account"
+    }, {
+        "key"           : "api_endpoint"
+    }, {
+        "key"           : "cronjob",
+        "xtype"         : "combo-boolean",
+        "value"         : 0
+    }, {
+        "key"           : "default_active",
+        "value"         : 1
+    }, {
+        "key"           : "log_email"
+    }, {
+        "key"           : "log_lifetime",
+        "value"         : 7
+    }, {
+        "key"           : "log_send",
+        "xtype"         : "combo-boolean",
+        "value"         : 0
+    }, {
+        "key"           : "summary",
+        "value"         : "{}"
+    }],
+    "build"         : {
+        "resolvers"     : [
+            "resolvers/tables.resolver.php",
+            "resolvers/kv.resolver.php"
+        ],
+        "attributes"    : {
+            "license"       : "docs/license.txt",
+            "readme"        : "docs/readme.txt",
+            "changelog"     : "docs/changelog.txt"   
+        }
+    }
+}

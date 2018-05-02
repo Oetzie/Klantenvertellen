@@ -1,3 +1,16 @@
+/* Should be moved to default theme. */
+.x-menu-item-icon {
+    left: 7px !important;
+    font-size: 14px !important;
+    line-height: 16px !important;  
+    text-align: center !important;
+}
+
+/* Shoul be moved to default theme. */
+.x-btn-text .icon {
+    margin-right: 8px;
+}
+
 #modx-action-buttons .x-btn-branding {
 	background: none !important;
 	box-shadow: none !important;
@@ -5,22 +18,60 @@
 	color: #555555 !important;
 }
 
-.panel-desc {
-	overflow: hidden;
+.panel-desc-error {
+    padding: 15px 15px 0;
+    background: #ffffff;
 }
 
-.panel-desc .logo-kv {
-	display: block;
-	float: right;
-	width: 220px;
-	height: 85px;
-	margin: -15px -15px -15px 15px;
-	background: #ffffff url('../../img/mgr/logo.png') no-repeat center center;
-	border-bottom: 1px solid #f0f0f0;
+.panel-desc-error p {
+    color: #573a08;
+    padding: 15px;
+    background: #fffaf3;
+    border: 1px solid #c9ba9B;
 }
 
-.avarage {
+.kv-grid-avarage {
 	display: inline-block;
 	width: 40px;
 	text-align: right;
+}
+
+.kv-summary {
+    padding: 15px 0;
+    margin-top: -15px;
+    margin-bottom: -15px;
+    background: #ffffff;
+}
+
+.kv-summary-total {
+    display: block;
+    font-size: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+
+.kv-summary-reviews {
+    display: block;
+    text-align: center;
+}
+
+.kv-summary-recommendation {
+    font-weight: bold;
+}
+
+.kv-summary-label {
+    display: inline-block;
+    width: 80%;
+    margin: 0 0 5px;
+}
+
+.kv-summary-report {
+    display: inline-block;
+    margin: 0 0 5px;
+}
+
+.kv-summary-logo {
+    display: block;
+    text-align: center;
+    margin: 15px 0;
 }
