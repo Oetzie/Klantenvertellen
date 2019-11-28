@@ -1,0 +1,104 @@
+{
+    "name": "Klantenvertellen",
+    "lowCaseName": "klantenvertellen",
+    "description": "A klantenvertellen solution for MODx Revolution.",
+    "author": "Oetzie.nl",
+    "version": "1.3.0-pl",
+    "package":{
+        "menus": [{
+            "text": "klantenvertellen",
+            "description": "klantenvertellen.desc",
+            "parent": "components",
+            "action": "home"
+        }],
+        "elements": {
+            "chunks": [{
+                "name": "klantenvertellenItemTpl",
+                "file": "item.chunk.tpl"
+            },{
+                "name": "klantenvertellenWrapperTpl",
+                "file": "wrapper.chunk.tpl"
+            }],
+            "snippets": [{
+                "name": "Klantenvertellen",
+                "file": "klantenvertellen.snippet.php",
+                "properties": [{
+                    "name": "limit",
+                    "value": "10",
+                    "description": "klantenvertellen.snippet_limit_desc"
+                },{
+                    "name": "where",
+                    "value": "{\"active\": \"1\"}",
+                    "description": "klantenvertellen.snippet_where_desc"
+                },{
+                    "name": "sortby",
+                    "value": "{\"created\": \"DESC\"}",
+                    "description": "klantenvertellen.snippet_sortby_desc"
+                },{
+                    "name": "tpl",
+                    "value": "@FILE elements/chunks/item.chunk.tpl",
+                    "description": "klantenvertellen.snippet_tpl_desc"
+                },{
+                    "name": "tplWrapper",
+                    "value": "@FILE elements/chunks/wrapper.chunk.tpl",
+                    "description": "klantenvertellen.snippet_tplwrapper_desc"
+                },{
+                    "name": "placeholders",
+                    "value": "{\"total\": \"reviews.total\"}",
+                    "description": "klantenvertellen.snippet_placeholders_desc"
+                }]
+            }]
+        },
+        "systemSettings": [{
+            "key": "branding_url",
+            "value": "//www.oetzie.nl",
+            "area": "klantenvertellen"
+        },{
+            "key": "branding_url_help",
+            "value": "//www.oetzie.nl",
+            "area": "klantenvertellen"
+        },{
+            "type": "combo-boolean",
+            "key": "cronjob",
+            "value": "0",
+            "area": "klantenvertellen"
+        },{
+            "key": "cronjob_hash",
+            "area": "klantenvertellen"
+        },{
+            "key": "default_active",
+            "value": "1",
+            "area": "klantenvertellen"
+        },{
+            "key": "log_email",
+            "area": "klantenvertellen"
+        },{
+            "key": "log_lifetime",
+            "value": "7",
+            "area": "klantenvertellen"
+        },{
+            "type": "combo-boolean",
+            "key": "log_send",
+            "value": "1",
+            "area": "klantenvertellen"
+        },{
+            "key": "summary",
+            "value": "{}",
+            "area": "klantenvertellen"
+        },{
+            "key": "api_endpoint",
+            "area": "klantenvertellen"
+        }]
+    },
+    "build":{
+        "readme": "docs/readme.txt",
+        "license": "docs/license.txt",
+        "changelog": "docs/changelog.txt",
+        "resolver": {
+            "after": [
+                "resolve.tables.php",
+                "permissions.resolver.php"
+            ]
+        }
+    }
+}

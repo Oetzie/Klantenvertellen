@@ -1,0 +1,1 @@
+<p>{'klantenvertellen.no_reviews' | lexicon}</p>

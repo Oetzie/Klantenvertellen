@@ -1,0 +1,1 @@
+<p>[[%klantenvertellen.no_reviews? &namespace=`klantenvertellen`&topic=`default`]]</p>
